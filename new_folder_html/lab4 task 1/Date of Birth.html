@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DOB Validation</title>
+</head>
+<script>
+function validateDOB()
+{
+    var d = document.getElementById("day").value;
+    var m = document.getElementById("month").value;
+    var y = document.getElementById("year").value;
+
+    if(d==""||m==""||y=="")
+    {
+        alert("Cannot be empty");
+        return false;
+    }
+    d=Number(d);
+    m=Number(m);
+    y=Number(y);
+    if(d<1||d>31)
+    {
+        alert("Invalid day");
+        return false;
+    }
+    if(m<1||m>12)
+    {
+        alert("Invalid month");
+        return false;
+    }
+    if(y<1900||y>2016)
+    {
+        alert("Invalid year");
+        return false;
+    }
+    alert("Valid DOB");
+    return true;
+}
+</script>
+<body>
+<form onsubmit="return validateDOB()">
+Day <input id="day" size="2">
+Month <input id="month" size="2">
+Year <input id="year" size="4">
+<br>
+<input type="submit">
+</form>
+</body>
+</html>
