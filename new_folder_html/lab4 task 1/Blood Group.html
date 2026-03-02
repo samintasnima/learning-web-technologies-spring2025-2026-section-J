@@ -1,13 +1,13 @@
-<!DOCTYPE html>
 <html>
 <head>
+<title>Blood Group Validation</title>
+<h2> Blood Group </h2>
 </head>
+
 <script>
-function validateBlood()
-{
+function validateBlood(){
     var b = document.getElementById("blood").value;
-    if(b=="")
-    {
+    if(b==""){
         alert("Select blood group");
         return false;
     }
@@ -20,8 +20,13 @@ function validateBlood()
 <select id="blood">
 <option value="">Select</option>
 <option>A+</option>
+<option>A-</option>
 <option>B+</option>
+<option>B-</option>
+<option>AB+</option>
+<option>AB-</option>
 <option>O+</option>
+<option>O-</option>
 </select>
 <br>
 <input type="submit">

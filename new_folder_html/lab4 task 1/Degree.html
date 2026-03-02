@@ -1,15 +1,14 @@
-<!DOCTYPE html>
 <html>
 <head>
+<title>Degree Validation</title>
 </head>
+<h2> Degree </h2>
 <script>
-function validateDegree()
-{
+function validateDegree(){
     var s = document.getElementById("ssc").checked;
     var h = document.getElementById("hsc").checked;
     var b = document.getElementById("bsc").checked;
-    if(!s && !h && !b)
-    {
+    if(!s && !h && !b){
         alert("Select degree");
         return false;
     }

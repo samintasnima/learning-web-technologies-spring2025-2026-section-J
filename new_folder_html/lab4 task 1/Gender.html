@@ -1,15 +1,13 @@
-<!DOCTYPE html>
 <html>
 <head>
 <title>Gender Validation</title>
 </head>
+<h2> Gender </h2>
 <script>
-function validateGender()
-{
+function validateGender(){
     var m = document.getElementById("male").checked;
     var f = document.getElementById("female").checked;
-    if(!m && !f)
-    {
+    if(!m && !f){
         alert("Select gender");
         return false;
     }

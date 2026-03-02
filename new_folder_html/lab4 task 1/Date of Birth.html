@@ -1,35 +1,29 @@
-<!DOCTYPE html>
 <html>
 <head>
 <title>DOB Validation</title>
 </head>
+<h2>Date of Birth </h2>
 <script>
-function validateDOB()
-{
+function validateDOB(){
     var d = document.getElementById("day").value;
     var m = document.getElementById("month").value;
     var y = document.getElementById("year").value;
-
-    if(d==""||m==""||y=="")
-    {
+    if(d==""||m==""||y=="") {
         alert("Cannot be empty");
         return false;
     }
     d=Number(d);
     m=Number(m);
     y=Number(y);
-    if(d<1||d>31)
-    {
+    if(d<1||d>31){
         alert("Invalid day");
         return false;
     }
-    if(m<1||m>12)
-    {
+    if(m<1||m>12){
         alert("Invalid month");
         return false;
     }
-    if(y<1900||y>2016)
-    {
+    if(y<1900||y>2016) {
         alert("Invalid year");
         return false;
     }
