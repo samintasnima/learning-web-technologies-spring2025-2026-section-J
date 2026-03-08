@@ -1,0 +1,123 @@
+<html>
+<head>
+<title>JS Calculator</title>
+<h2> Calculator </h2>
+<style>
+body{
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+.calculator{
+border:1px solid black;
+padding:20px;
+}
+#display{
+width:200px;
+height:40px;
+font-size:20px;
+text-align:right;
+margin-bottom:10px;
+}
+.buttons{
+display:grid;
+grid-template-columns:repeat(4,50px);
+gap:5px;
+}
+button{
+height:40px;
+font-size:18px;
+}
+</style>
+</head>
+<body>
+<script>
+let calculator = document.createElement("div");
+calculator.className = "calculator";
+
+let display = document.createElement("input");
+display.type = "text";
+display.id = "display";
+display.readOnly = true;
+
+calculator.appendChild(display);
+
+let buttonsDiv = document.createElement("div");
+
+buttonsDiv.className = "buttons";
+calculator.appendChild(buttonsDiv);
+document.body.appendChild(calculator);
+let firstNumber = "";
+let secondNumber = "";
+let operator = "";
+
+function addNumber(num){
+if(operator === ""){
+firstNumber += num;
+display.value = firstNumber;
+}
+else{
+secondNumber += num;
+display.value = secondNumber;
+}
+}
+function setOperator(op){
+operator = op;
+}
+function clearDisplay(){
+firstNumber = "";
+secondNumber = "";
+operator = "";
+display.value = "";
+}
+function calculate(){
+let num1 = Number(firstNumber);
+let num2 = Number(secondNumber);
+let result;
+if(operator === "+"){
+result = num1 + num2;
+}
+else if(operator === "-"){
+result = num1 - num2;
+}
+else if(operator === "*"){
+result = num1 * num2;
+}
+else if(operator === "/"){
+result = num1 / num2;
+}
+display.value = result;
+firstNumber = result;
+secondNumber = "";
+operator = "";
+}
+function createButton(text, action){
+let btn = document.createElement("button");
+btn.innerText = text;
+btn.onclick = action;
+buttonsDiv.appendChild(btn);
+}
+createButton("C", clearDisplay);
+createButton("/", () => setOperator("/"));
+createButton("*", () => setOperator("*"));
+createButton("-", () => setOperator("-"));
+
+createButton("7", () => addNumber(7));
+createButton("8", () => addNumber(8));
+createButton("9", () => addNumber(9));
+createButton("+", () => setOperator("+"));
+
+createButton("4", () => addNumber(4));
+createButton("5", () => addNumber(5));
+createButton("6", () => addNumber(6));
+createButton("=", calculate);
+
+createButton("1", () => addNumber(1));
+createButton("2", () => addNumber(2));
+createButton("3", () => addNumber(3));
+createButton("0", () => addNumber(0));
+
+</script>
+</body>
+</html>
