@@ -1,0 +1,118 @@
+<html>
+<head>
+<title>Tic Tac Toe</title>
+<style>
+body{
+text-align:center;
+font-family:Arial;
+}
+.board{
+display:grid;
+grid-template-columns:repeat(3,80px);
+gap:5px;
+justify-content:center;
+margin-top:20px;
+}
+.cell{
+width:80px;
+height:80px;
+border:2px solid black;
+font-size:40px;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+}
+.win{
+background-color:rgb(70, 70, 104);
+}
+</style>
+</head>
+<body>
+<h2>Tic Tac Toe Game</h2>
+<h3 id="status">Player X Turn</h3>
+<div class="board">
+<div class="cell"></div>
+<div class="cell"></div>
+<div class="cell"></div>
+<div class="cell"></div>
+<div class="cell"></div>
+<div class="cell"></div>
+<div class="cell"></div>
+<div class="cell"></div>
+<div class="cell"></div>
+</div>
+<br>
+<button onclick="resetGame()">Reset Game</button>
+<script>
+var cells = document.querySelectorAll(".cell");
+var currentPlayer = "X";
+var gameOver = false;
+var winComb = [
+[0,1,2],
+[3,4,5],
+[6,7,8],
+[0,3,6],
+[1,4,7],
+[2,5,8],
+[0,4,8],
+[2,4,6]
+];
+for(var i=0;i<cells.length;i++){
+cells[i].addEventListener("click",cellClick);
+}
+function cellClick(){
+if(this.innerHTML!="" || gameOver){
+return;
+}
+this.innerHTML=currentPlayer;
+checkWinner();
+if(!gameOver){
+if(currentPlayer=="X"){
+currentPlayer="O";
+}
+else{
+currentPlayer="X";
+}
+document.getElementById("status").innerHTML="Player "+currentPlayer+" Turn";
+}
+}
+function checkWinner(){
+for(var i=0;i<winComb.length;i++){
+var a=winComb[i][0];
+var b=winComb[i][1];
+var c=winComb[i][2];
+if(cells[a].innerHTML!="" &&
+cells[a].innerHTML==cells[b].innerHTML &&
+cells[a].innerHTML==cells[c].innerHTML){
+cells[a].classList.add("win");
+cells[b].classList.add("win");
+cells[c].classList.add("win");
+document.getElementById("status").innerHTML="Player "+cells[a].innerHTML+" Wins!";
+gameOver=true;
+return;
+}
+}
+var filled=true;
+for(var i=0;i<cells.length;i++){
+if(cells[i].innerHTML==""){
+filled=false;
+}
+}
+if(filled){
+document.getElementById("status").innerHTML="It's a Draw!";
+gameOver=true;
+}
+}
+function resetGame(){
+for(var i=0;i<cells.length;i++){
+cells[i].innerHTML="";
+cells[i].classList.remove("win");
+}
+currentPlayer="X";
+gameOver=false;
+document.getElementById("status").innerHTML="Player X Turn";
+}
+</script>
+</body>
+</html>
